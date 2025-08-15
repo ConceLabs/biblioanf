@@ -1,0 +1,6 @@
+{
+  "name": "Biblioteca ANF",
+  "description": "Un repositorio de documentos jurídicos con búsqueda, categorías y un panel de administración. Permite visualizar documentos en formato Markdown y PDF con controles de zoom.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
