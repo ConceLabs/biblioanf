@@ -8,9 +8,8 @@ import DocumentCard from './components/DocumentCard';
 import DocumentViewer from './components/DocumentViewer';
 import AdminView from './components/AdminView';
 import AbonoCalculator from './components/AbonoCalculator';
-import InfoCard from './components/InfoCard'; // Importar el nuevo componente
+import InfoCard from './components/InfoCard';
 import usePersistentState from './hooks/usePersistentState';
-
 
 const App: React.FC = () => {
   const [documents, setDocuments] = usePersistentState<Document[]>('documents', MOCK_DOCUMENTS);
@@ -59,7 +58,6 @@ const App: React.FC = () => {
   };
 
   const filteredDocuments = useMemo(() => {
-    // No filtering for special tabs
     if ([Category.Credits, Category.Admin].includes(activeTab)) return [];
 
     return documents.filter(doc => {
@@ -68,7 +66,6 @@ const App: React.FC = () => {
       const query = searchQuery.toLowerCase();
       const inTitle = doc.title.toLowerCase().includes(query);
       const inSubtitle = doc.subtitle?.toLowerCase().includes(query) ?? false;
-      // Only search content for MD docs to avoid matching URLs or App IDs accidentally
       const inContent = doc.type === DocType.MD ? doc.content.toLowerCase().includes(query) : false;
       return inCategory && (inTitle || inSubtitle || inContent);
     });
@@ -105,7 +102,7 @@ const App: React.FC = () => {
         <AdminView
           isLoggedIn={isLoggedIn}
           onLogin={handleLogin}
-          documents={documents.filter(d => d.category !== Category.Credits)} // Don't allow editing credits
+          documents={documents.filter(d => d.category !== Category.Credits)}
           onAddDocument={handleAddDocument}
           onUpdateDocument={handleUpdateDocument}
           onDeleteDocument={handleDeleteDocument}
@@ -135,7 +132,7 @@ const App: React.FC = () => {
         if (selectedDoc.content === 'abono-calculator') {
           return <AbonoCalculator onBack={handleBack} />;
         }
-        if (selectedDoc.content === 'asistencia-juridica') {
+         if (selectedDoc.content === 'asistencia-juridica') {
           return <InfoCard onBack={handleBack} />;
         }
         return <DocumentViewer doc={selectedDoc} onBack={handleBack} searchQuery={searchQuery} zoomLevel={zoomLevel} setZoomLevel={setZoomLevel} />;

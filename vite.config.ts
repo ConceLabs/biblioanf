@@ -11,12 +11,16 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo192.png', 'logo512.png', 'favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['logo192.png', 'logo512.png', 'favicon.ico', 'apple-touch-icon.png', 'logo-anf.png', 'credits-logo.png'],
       manifest: {
         name: 'Biblioteca ANF',
         short_name: 'BiblioANF',
         description: 'Un repositorio de documentos jurídicos con búsqueda, categorías y un panel de administración.',
         theme_color: '#1e293b',
+        background_color: '#ffffff',
+        display: 'standalone',
+        scope: `/${REPO_NAME}/`,
+        start_url: `/${REPO_NAME}/`,
         icons: [
           {
             src: 'logo192.png',

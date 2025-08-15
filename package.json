@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://concelabs.github.io/biblioanf",
+  "homepage": "https://<TU-USUARIO-DE-GITHUB>.github.io/<TU-REPOSITORIO>",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
